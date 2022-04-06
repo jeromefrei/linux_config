@@ -20,7 +20,10 @@ call plug#end()
 colorscheme gruvbox
 
 " mapping keys
-nnoremap <F7> : NERDTree<CR>
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+:let mapleader = ","
+
+:nnoremap <leader>t : NERDTreeToggle<CR>
+:nnoremap <leader>b :buffers<CR>:buffer<Space>
+:let g:airline_powerline_fonts = 1
+:let g:airline#extensions#tabline#enabled = 1
+:let g:airline#extensions#tabline#formatter = 'unique_tail'
