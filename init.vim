@@ -4,6 +4,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -18,5 +19,8 @@ call plug#end()
 :set hlsearch
 colorscheme gruvbox
 
+" mapping keys
+nnoremap <F7> : NERDTree<CR>
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
