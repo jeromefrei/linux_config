@@ -28,6 +28,7 @@ call plug#end()
 :let mapleader = ","
 
 :nnoremap <leader>t : NERDTreeToggle<CR>
+:nnoremap <leader>f : NERDTreeFocus<CR>
 :nnoremap <leader>b : buffers<CR>:buffer<Space>
 
 " format code
