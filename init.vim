@@ -70,6 +70,3 @@ if !exists('g:airline_symbols')
   let g:airline_symbols.spell = 'Ꞩ'
   let g:airline_symbols.notexists = 'Ɇ'
   let g:airline_symbols.whitespace = 'Ξ'
-
-
-
