@@ -1,0 +1,65 @@
+[core]
+	autocrlf=false
+	editor=vi
+	whitespace=cr-at-eol, nowarn
+	symlinks=true
+	preloadinx = true
+	fscache = true
+[user]
+	name = 
+	email = 
+[push]
+	default=tracking
+[branch]
+	autosetuprebase=always
+[init]
+	defaultBranch=main
+[alias]
+	st			= status
+	stb 		= status -sb
+	co 			= checkout
+	cob			= checkout -b
+	br			= branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+	ci 			= commit
+	cp 			= cherry-pick -x
+	sb 			= show-branch
+	lg 			= !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
+	undo 		= reset HEAD~1 --mixed
+	unstage 	= restore --staged
+	xn 			= diff --name-status
+	xns 		= diff --name-status --staged
+	xd 			= difftool -y
+	xds 		= difftool -y --staged
+	xm 			= mergetool -y
+	show-graph 	= log --graph --oneline --decorate=short
+	graph 			= log --graph --pretty=format:'%Creset%C(bold red)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%an)%Creset %Cgreen(%ci)%Creset' --abbrev-commit
+	
+	
+[color "status"]
+	untracked = bold red
+	changed = bold red
+[color "diff"]
+	old = bold red
+	new = bold green
+[color "decorate"]
+	HEAD = bold cyan blink
+	
+[mergetool]
+    prompt = true
+[mergetool "winmerge"]
+    name = WinMerge
+    trustExitCode = true
+	cmd = \"C:\\Program Files\\WinMerge\\WinMergeU.exe\" //e //u //dl \"Local\" //dr \"Remote\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	keepBackup = false
+	trustExitCode = true
+[diff]
+    tool = winmerge
+	prompt = true
+[difftool "winmerge"]
+    tool = WinMerge
+    keepBackup = false
+	cmd = \"C:\\Program Files\\WinMerge\\WinMergeU.exe\" //e //u \"$LOCAL\" \"$REMOTE\"
+
+[gui]
+[safe]
+	directory = *
