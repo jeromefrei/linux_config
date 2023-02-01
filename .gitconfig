@@ -6,8 +6,8 @@
 	preloadinx = true
 	fscache = true
 [user]
-	name = Jérôme Frei (Galenica)
-	email = jerome.frei@galenica.com
+	name = 
+	email = 
 [push]
 	default=tracking
 [branch]
@@ -34,19 +34,6 @@
 	show-graph 	= log --graph --oneline --decorate=short
 	graph 			= log --graph --pretty=format:'%Creset%C(bold red)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%an)%Creset %Cgreen(%ci)%Creset' --abbrev-commit
 	
-	#JIRA
-	# Get JIRA ticket number
-	jiran = "!f() { git currentbranch | sed "s/dev.//" | grep -o -E "OCTP+-[0-9]+"; }; f"
-	# Open Browser on Jira ticket
-	j = "!explorer https://galenica.atlassian.net/browse/$(git jiran)"
-	# Create new feature branch
-	nfb = "!f() { currentbranchName=$(git currentbranchName);  git pull; git checkout -b dev/rob/$currentbranchName/OCTP-$1; }; f"
-	# Extended Create new feature branch - When there is more than one release branch existing
-	enfb = "!f() { releaseBranch=$(git rel $2); git fetch; git checkout -b dev/rob/OCTP-$1 $releaseBranch; }; f"
-	# Find feature branch from ticket number
-	fb = "!f() { git branch -a | grep "dev/rob/.*$1.*" | sed "s/remotes.//" | sed "s/origin.//" | sort -u; }; f"
-	# Checkout feature branch from ticket number
-	cfb = "!f() { featureBranch=$(git fb $1); if [[ "$featureBranch" = *$'\n'* ]] ; then echo "Checkout the feature branch you prefer:"; git fb $1; else git checkout $featureBranch; git pull; fi; }; f"
 	
 [color "status"]
 	untracked = bold red
@@ -74,9 +61,5 @@
 	cmd = \"C:\\Program Files\\WinMerge\\WinMergeU.exe\" //e //u \"$LOCAL\" \"$REMOTE\"
 
 [gui]
-	recentrepo = D:/Repos/TriaPharm/ActivePharmacy
-	recentrepo = D:/Repos/TriaPharm/CentralAdmin
 [safe]
 	directory = *
-[credential "https://tfs.hcisolutions.ch"]
-	provider = generic
