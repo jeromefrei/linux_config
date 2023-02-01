@@ -1,0 +1,82 @@
+[core]
+	autocrlf=false
+	editor=vi
+	whitespace=cr-at-eol, nowarn
+	symlinks=true
+	preloadinx = true
+	fscache = true
+[user]
+	name = Jérôme Frei (Galenica)
+	email = jerome.frei@galenica.com
+[push]
+	default=tracking
+[branch]
+	autosetuprebase=always
+[init]
+	defaultBranch=main
+[alias]
+	st			= status
+	stb 		= status -sb
+	co 			= checkout
+	cob			= checkout -b
+	br			= branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+	ci 			= commit
+	cp 			= cherry-pick -x
+	sb 			= show-branch
+	lg 			= !git log --pretty=format:\"%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]\" --abbrev-commit -30
+	undo 		= reset HEAD~1 --mixed
+	unstage 	= restore --staged
+	xn 			= diff --name-status
+	xns 		= diff --name-status --staged
+	xd 			= difftool -y
+	xds 		= difftool -y --staged
+	xm 			= mergetool -y
+	show-graph 	= log --graph --oneline --decorate=short
+	graph 			= log --graph --pretty=format:'%Creset%C(bold red)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)(%an)%Creset %Cgreen(%ci)%Creset' --abbrev-commit
+	
+	#JIRA
+	# Get JIRA ticket number
+	jiran = "!f() { git currentbranch | sed "s/dev.//" | grep -o -E "OCTP+-[0-9]+"; }; f"
+	# Open Browser on Jira ticket
+	j = "!explorer https://galenica.atlassian.net/browse/$(git jiran)"
+	# Create new feature branch
+	nfb = "!f() { currentbranchName=$(git currentbranchName);  git pull; git checkout -b dev/rob/$currentbranchName/OCTP-$1; }; f"
+	# Extended Create new feature branch - When there is more than one release branch existing
+	enfb = "!f() { releaseBranch=$(git rel $2); git fetch; git checkout -b dev/rob/OCTP-$1 $releaseBranch; }; f"
+	# Find feature branch from ticket number
+	fb = "!f() { git branch -a | grep "dev/rob/.*$1.*" | sed "s/remotes.//" | sed "s/origin.//" | sort -u; }; f"
+	# Checkout feature branch from ticket number
+	cfb = "!f() { featureBranch=$(git fb $1); if [[ "$featureBranch" = *$'\n'* ]] ; then echo "Checkout the feature branch you prefer:"; git fb $1; else git checkout $featureBranch; git pull; fi; }; f"
+	
+[color "status"]
+	untracked = bold red
+	changed = bold red
+[color "diff"]
+	old = bold red
+	new = bold green
+[color "decorate"]
+	HEAD = bold cyan blink
+	
+[mergetool]
+    prompt = true
+[mergetool "winmerge"]
+    name = WinMerge
+    trustExitCode = true
+	cmd = \"C:\\Program Files\\WinMerge\\WinMergeU.exe\" //e //u //dl \"Local\" //dr \"Remote\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	keepBackup = false
+	trustExitCode = true
+[diff]
+    tool = winmerge
+	prompt = true
+[difftool "winmerge"]
+    tool = WinMerge
+    keepBackup = false
+	cmd = \"C:\\Program Files\\WinMerge\\WinMergeU.exe\" //e //u \"$LOCAL\" \"$REMOTE\"
+
+[gui]
+	recentrepo = D:/Repos/TriaPharm/ActivePharmacy
+	recentrepo = D:/Repos/TriaPharm/CentralAdmin
+[safe]
+	directory = *
+[credential "https://tfs.hcisolutions.ch"]
+	provider = generic
