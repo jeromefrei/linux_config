@@ -1,0 +1,19 @@
+############ shared library
+g++ -fPIC -shared -o libmyLib myLib.cpp
+
+# compilation du programme avec la library
+g++ -L. -lmyLib -o main main.cpp
+
+# dans le shell
+export LD_LIBRARY_PATH=./
+
+
+########## static library
+g++ -c myLib.cpp -o libmyLib.o
+
+ar rcs libmyLib.a libmyLib.o
+
+g++ -L./ -o main main.cpp libmyLib.a
+
+# dans le shell
+export LD_LIBRARY_PATH=./
