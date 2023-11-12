@@ -15,11 +15,13 @@ call plug#end()
 :syntax enable
 :filetype plugin indent on
 :set relativenumber
-:set number
+":set number
+:set relativenumber
 :set expandtab
 :set shiftwidth=4
-:set smarttab
 :set tabstop=4
+:set smartindent
+:set smarttab
 :set background=dark
 :set hlsearch
 :colorscheme gruvbox
