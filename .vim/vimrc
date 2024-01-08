@@ -1,8 +1,17 @@
+call plug#begin()
+
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+:
 filetype plugin indent on
 syntax on
 set backspace=indent,eol,start
 set number
-colorscheme peachpuff
+set background=dark
+set termguicolors
+set t_Co=256
+colorscheme gruvbox
 
 let $RTP=split(&runtimepath, ',')[0]
 let $RC="$HOME/.vim/vimrc"
@@ -23,4 +32,4 @@ let mapleader = ","
 nnoremap <leader>f gg=G
 inoremap <leader>f :<ESC>gg=G
 
-inoremap jj :<ESC>
+inoremap jj <ESC>
