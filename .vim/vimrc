@@ -1,0 +1,26 @@
+filetype plugin indent on
+syntax on
+set backspace=indent,eol,start
+set number
+colorscheme peachpuff
+
+let $RTP=split(&runtimepath, ',')[0]
+let $RC="$HOME/.vim/vimrc"
+
+"set list
+"set listchars=tab:>_,eol:¬
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set expandtab
+set smartindent
+set hidden
+
+" Mapping
+let mapleader = ","
+nnoremap <leader>f gg=G
+inoremap <leader>f :<ESC>gg=G
+
+inoremap jj :<ESC>
